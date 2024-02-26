@@ -58,3 +58,6 @@ dkms.conf
 personal_use
 */personal_use
 
+
+# cmake
+cmake-build-debug
