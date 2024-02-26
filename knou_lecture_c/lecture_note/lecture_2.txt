@@ -1,0 +1,235 @@
+2.1.1 Constant
+
+    decimal
+        Can not start with 0
+            11, -10
+
+    octal
+        start with 0
+            011, 055
+
+    hex
+        start with 0x
+            0x11, 0X5A
+
+    unsigned
+        attach u or U end of number
+            12u, 067U, 0x5AU
+
+    long
+        attach l or L end of number
+            12l, 067L, 0x5AL
+
+    floating point type constant
+        default type is double
+            point(double)
+                12.345, .5
+            exponent
+                12E3(=12000), 5e-2(=0.05)
+            float
+                12.3f, 5.2F, 3.14e-2f(=0.0314)
+            long double
+                12.3l, 5.2L, 3.14e-2l(=0.0314)
+
+    character
+        use single quote
+            'a', 'b', 'c'
+
+        Escape sequence
+            \a alert
+            \b backspace
+            \f form feed
+            \n new line
+            \r carriage return
+            \t horizontal tab
+            \0 null character
+            \ooo octal number
+            \xhh hexadecimal number
+            \\ backslash
+
+    string
+        use double quote
+            "Hello, World"
+
+        string data added to memory with null character at the end
+            "Hello, World" -> Hello, World\0
+                13 bytes(12 characters + 1 null character)
+
+
+
+2.1.2 Variable
+
+    The SPACE of memory to store data which can be changed
+    Every variable has a name, type, and value
+
+    Variable name
+        Start with alphabet or underscore (can not start with number)
+        Can use alphabet, number, and underscore
+        Can not use special character without underscore
+        Cse-sensitive
+        Can not use reserved word
+
+
+    Variable type
+
+        Basic type
+            integer type
+                int, short, long, unsigned
+            floating point type
+                float, double, long double
+            character type
+                char, unsigned char
+            enumeration type
+                enum
+            void type
+                void
+
+        Derived type
+            array
+            function
+            pointer
+            structure
+            type definition
+
+
+    Range of variable type
+
+        integer type
+            short int
+                2 bytes
+                -32768 ~ 32767
+            long int
+                4 bytes
+                -2147483648 ~ 2147483647
+            int (same as long int)
+                4 bytes
+                -2147483648 ~ 2147483647
+            unsigned short int
+                2 bytes
+                0 ~ 65535
+            unsigned long int
+                4 bytes
+                0 ~ 4294967295
+            unsigned int (same as unsigned long int)
+                4 bytes
+                0 ~ 4294967295
+
+        floating point type
+            float
+                4 bytes
+                3.4E-38 ~ 3.4E+38
+            double
+                8 bytes
+                1.7E-308 ~ 1.7E+308
+            long double
+                10 bytes
+                3.4E-4932 ~ 3.4E+4932
+
+        character type (use ASCII code)
+            char
+                1 byte
+                -128 ~ 127
+            unsigned char
+                1 byte
+                0 ~ 255
+
+        enumeration type
+            4 bytes
+            -2147483648 ~ 2147483647
+
+
+
+    Global variable
+        Can be used in any function
+
+        Can be used in any file if it is declared as EXTERN
+            It means that the variable is declared in another file
+
+        Can be used in any file if it is declared as STATIC
+            It means that the variable is declared in the same file
+
+
+    Local variable
+        Can be used only in the function where it is declared
+
+        Not recommended (Declaration shadows)
+            If the variable is declared which has the same name with global variable,
+                the local variable is used in the block
+            It is possible to use the same name in different function
+
+
+
+
+
+2.3 Preprocessor
+
+    Before the program is COMPILED, the preprocessor processes the source code
+
+    Rule
+        Start with #
+        No semicolon at the end of line
+        It should be written in the first column of the line
+        One command per one line
+
+
+    Preprocessor command
+
+        #include
+            (Include the file)
+            Source file includes header file(.h) and compiles it together
+                ex)
+                    #include <stdio.h>
+                        < > : Search the file in the standard library (include directory)
+                    #include "stdio.h"
+                    #include "myheader.h"
+                    #include "\tc\lib\math.h"
+
+
+        #define, #undef
+            Define the macro constant
+                ex)
+                    #define PI 3.141592
+                    #define MAX 100
+            Undefine the macro constant
+                ex)
+                    #undef PI
+            Define the macro function
+                ex)
+                    #define CIRCLE_AREA(x) (3.141592*(x)*(X))
+                    #define CUBE(x) ((x) * (x) * (x))
+
+                Macro function is worked by preprocessor
+                    It is no need to declare the type of parameter
+                    Any type of parameter can be used
+                    It would be faster than function, if the function is simple (one or two lines)
+
+
+        #if, #elif, #else, #endif
+            Conditional compilation
+                It should be possible to evaluate as true or false in the preprocessor
+                It is impossible to call the function or declare the variable in the preprocessor
+                It is used to use the macro constant
+
+            ex)
+                #if MAX > 100
+                    printf("MAX is greater than 100\n");
+                #elif MAX < 100
+                    printf("MAX is less than 100\n");
+                #else
+                    printf("MAX is equal to 100\n");
+                #endif
+
+
+        #ifdef, #ifndef
+            Check if the macro is defined
+            ex)
+                #ifdef PI
+                    printf("PI is defined\n");
+                #endif
+                #ifndef MAX
+                    printf("MAX is not defined\n");
+                #endif
+
+
+    * <stdio.h> is a standard input/output library
+        It has functions like printf(), scanf(), etc.
