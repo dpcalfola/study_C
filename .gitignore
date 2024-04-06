@@ -54,7 +54,13 @@ dkms.conf
 # User ignore files
 .idea
 */.idea
-.DStore
+.DS_store
+*/.DS_store
+*/*/.DS_store
+*/*/*/.DS_store
+*/*/*/*/.DS_store
+
+# Personal_use
 personal_use
 */personal_use
 

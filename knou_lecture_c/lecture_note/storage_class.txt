@@ -1,0 +1,37 @@
+Storage class (기억 클래스)
+
+1. auto storage class
+    default storage class.
+    It is local variables and only exists within the block in which it is declared.
+    auto keyword is omitted usually.
+    ```
+    int a = 10;
+    auto int b = 20;
+    ```
+
+2. static storage class
+    One of the global variables.
+    If a static variable is not initialized, it is automatically initialized to zero.
+    It occupies memory in the lifetime of the program.
+
+
+3. extern storage class
+    It is also a global variable.
+    It is used to give a reference of a global variable that is visible to ALL the program files.
+
+    When there are multiple files,
+        and you define a global variable or function,
+        which will also be used in other files,
+        then extern will be used in another file to give reference of defined variable or function.
+
+
+4. register storage class
+    It is used to define local variables that should be stored in a register instead of RAM.
+    It makes the access to the variable faster.
+    Usually, it is used for "for loop counter" variables.
+
+
+
+
+
+

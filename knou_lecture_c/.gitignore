@@ -55,9 +55,16 @@ dkms.conf
 .idea
 */.idea
 .DStore
+*/.DStore
+*/*/.DStore
+*/*/*/.DStore
+
 personal_use
 */personal_use
 
 
 # cmake
 cmake-build-debug
+
+# Hide copyright document
+ontact/2024_03_25/ontact_lecture_documents/
